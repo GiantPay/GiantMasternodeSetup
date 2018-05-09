@@ -12,6 +12,7 @@ chmod +x GiantMasternodeSetup.sh
 
 After execution, the script displays the generated masternode key. Which you should use in masternodes.config.
 
-We recommend the VPS for https://www.digitalocean.com/ or https://www.vultr.com/
+We recommend the VPS for https://www.digitalocean.com/ or https://www.vultr.com/.
+
 We also recommend the distribution of Linux: Ubuntu 16.04 LTS. 
 
