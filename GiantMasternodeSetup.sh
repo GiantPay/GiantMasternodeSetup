@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "create swap ...\n\n"
+echo -e "create swap ...\n\n"
 sudo touch /var/swap.img
 sudo chmod 600 /var/swap.img
 sudo dd if=/dev/zero of=/var/swap.img bs=1024k count=2000
@@ -8,7 +8,7 @@ mkswap /var/swap.img
 sudo swapon /var/swap.img
 sudo echo "/var/swap.img none swap sw 0 0" >> /etc/fstab
 
-echo "\n\nupdate & prepare system ...\n\n"
+echo -e "\n\nupdate & prepare system ...\n\n"
 sudo apt-get update -y
 sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
@@ -20,23 +20,25 @@ sudo add-apt-repository ppa:bitcoin/bitcoin -y
 sudo apt-get update -y
 sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
 
-echo "\n\nsetup giantd ...\n\n"
-wget https://github.com/GiantPay/GiantCore/releases/download/1.0.0.1/giant-1.0.0.1-linux64.zip
-chmod -R 755 /root/giant-1.0.0.1-linux64.zip
-unzip -o giant-1.0.0.1-linux64.zip
+echo -e "\n\nsetup giantd ...\n\n"
+wget https://github.com/GiantPay/GiantCore/releases/download/1.1.0.1/giant-1.1.0.1-linux64.zip
+chmod -R 755 /root/giant-1.1.0.1-linux64.zip
+unzip -o giant-1.1.0.1-linux64.zip
+sleep 5
 mkdir /root/giant
 mkdir /root/.giant
 cp /root/giantd /root/giant
 cp /root/giant-cli /root/giant
+sleep 5
 rm /root/giantd
 rm /root/giant-cli
 rm /root/giant-qt
 rm /root/giant-tx
-rm /root/giant-1.0.0.1-linux64.zip
+rm /root/giant-1.1.0.1-linux64.zip
 chmod -R 755 /root/giant
 chmod -R 755 /root/.giant
 
-echo "\n\nlaunch giantd ...\n\n"
+echo -e "\n\nlaunch giantd ...\n\n"
 sudo apt-get install -y pwgen
 GEN_PASS=`pwgen -1 20 -n`
 IP_ADD=`curl ipinfo.io/ip`
@@ -71,6 +73,6 @@ cd /root/.giant
 ufw allow 40444
 
 # output masternode key
-echo "Masternode private key: $masternodekey"
-echo "Welcome to the GIANT Masternode Network!"
+echo -e "Masternode private key: $masternodekey"
+echo -e "Welcome to the GIANT Masternode Network!"
 
