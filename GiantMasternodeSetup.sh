@@ -21,6 +21,7 @@ sudo apt-get update -y
 sudo apt-get install libdb4.8-dev libdb4.8++-dev -y
 
 echo -e "\n\nsetup giantd ...\n\n"
+cd ~
 wget https://github.com/GiantPay/GiantCore/releases/download/1.1.0.1/giant-1.1.0.1-linux64.zip
 chmod -R 755 /root/giant-1.1.0.1-linux64.zip
 unzip -o giant-1.1.0.1-linux64.zip
