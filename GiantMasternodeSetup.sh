@@ -47,7 +47,7 @@ IP_ADD=`curl ipinfo.io/ip`
 echo -e "rpcuser=giantuser\nrpcpassword=${GEN_PASS}\nserver=1\nlisten=1\nmaxconnections=256\ndaemon=1\nrpcallowip=127.0.0.1\nexternalip=${IP_ADD}:40444" > /root/.giant/giant.conf
 cd /root/giant
 ./giantd
-sleep 10
+sleep 40
 masternodekey=$(./giant-cli masternode genkey)
 ./giant-cli stop
 
