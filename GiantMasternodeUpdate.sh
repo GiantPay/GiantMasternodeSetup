@@ -14,7 +14,7 @@ echo "staking=0" >> /root/.giant/giant.conf
 
 echo -e "\n\nlaunch giantd ...\n\n"
 ./giant-cli stop
-./giantd -daemon
+./giantd -daemon -reindex
 
 echo "GIANT Masternode updated"
 
