@@ -6,7 +6,7 @@ cd /root/giant
 sleep 10
 
 wget https://github.com/GiantPay/GiantCore/releases/download/1.2.0.0/giant-1.2.0.0-linux64.zip
-chmod -R 755 /root/giant-1.2.0.0-linux64.zip
+chmod -R 755 /root/giant/giant-1.2.0.0-linux64.zip
 unzip -o giant-1.2.0.0-linux64.zip
 sleep 5
 rm /root/giant/giant-qt
