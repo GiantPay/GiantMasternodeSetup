@@ -51,6 +51,12 @@ sleep 40
 masternodekey=$(./giant-cli masternode genkey)
 ./giant-cli stop
 
+# add launch after reboot
+crontab -l > tempcron
+echo "@reboot /root/giant/giantd -reindex >/dev/null 2>&1" >> tempcron
+crontab tempcron
+rm tempcron
+
 echo -e "masternode=1\nmasternodeprivkey=$masternodekey\n\n\n" >> /root/.giant/giant.conf
 echo -e "addnode=144.76.15.105:40444" >> /root/.giant/giant.conf
 echo -e "addnode=94.130.187.187:40444" >> /root/.giant/giant.conf
@@ -68,6 +74,21 @@ echo -e "addnode=78.46.150.97:40444" >> /root/.giant/giant.conf
 echo -e "addnode=95.216.137.189:40444" >> /root/.giant/giant.conf
 echo -e "addnode=95.216.137.190:40444" >> /root/.giant/giant.conf
 echo -e "addnode=95.216.137.191:40444" >> /root/.giant/giant.conf
+echo -e "addnode=159.69.26.214:40444" >> /root/.giant/giant.conf
+echo -e "addnode=159.69.26.213:40444" >> /root/.giant/giant.conf
+echo -e "addnode=159.69.26.216:40444" >> /root/.giant/giant.conf
+echo -e "addnode=159.69.26.212:40444" >> /root/.giant/giant.conf
+echo -e "addnode=159.69.26.215:40444" >> /root/.giant/giant.conf
+echo -e "addnode=138.201.247.157:40444" >> /root/.giant/giant.conf
+echo -e "addnode=138.201.247.148" >> /root/.giant/giant.conf
+echo -e "addnode=138.201.247.175" >> /root/.giant/giant.conf
+echo -e "addnode=138.201.247.67:40444" >> /root/.giant/giant.conf
+echo -e "addnode=138.201.247.25:40444" >> /root/.giant/giant.conf
+echo -e "addnode=95.216.149.227:40444" >> /root/.giant/giant.conf
+echo -e "addnode=95.216.149.232:40444" >> /root/.giant/giant.conf
+echo -e "addnode=95.216.149.238:40444" >> /root/.giant/giant.conf
+echo -e "addnode=95.216.149.233:40444" >> /root/.giant/giant.conf
+echo -e "addnode=95.216.149.234:40444" >> /root/.giant/giant.conf
 
 ./giantd -daemon
 cd /root/.giant
