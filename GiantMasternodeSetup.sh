@@ -91,6 +91,31 @@ echo -e "addnode=95.216.149.234:40444" >> /root/.giant/giant.conf
 cd /root/.giant
 ufw allow 40444
 
+echo -e "\n\nadding giantd system service ...\n\n"
+touch /etc/systemd/system/giantd.service
+
+cat <<EOF >> /etc/systemd/system/giantd.service
+[Unit]
+Description=Giant
+After=network.target
+[Service]
+Type=forking
+User=root
+WorkingDirectory=/root
+ExecStart=/root/giant/giantd -conf=/root/.giant/giant.conf -datadir=/root/.giant
+ExecStop=/root/giant/giant-cli -conf=/root/.giant/giant.conf -datadir=/root/.giant stop
+Restart=on-failure
+RestartSec=1m
+StartLimitIntervalSec=5m
+StartLimitInterval=5m
+StartLimitBurst=3
+[Install]
+WantedBy=multi-user.target
+EOF
+
+sudo systemctl enable giantd
+sudo systemctl start giantd
+
 # output masternode key
 echo -e "Masternode private key: $masternodekey"
 echo -e "Welcome to the GIANT Masternode Network!"
