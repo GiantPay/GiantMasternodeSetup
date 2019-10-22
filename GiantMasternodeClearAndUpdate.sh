@@ -23,13 +23,12 @@ wget https://github.com/GiantPay/GiantCore/releases/download/1.4.0.0/giant-1.4.0
 chmod -R 755 /root/giant/giant-1.4.0-x86_64-linux-gnu.tar.gz
 tar -xzf giant-1.4.0-x86_64-linux-gnu.tar.gz
 sleep 5
-rm $GIANT_PATH/giant-qt
-rm $GIANT_PATH/giant-tx
-cp $GIANT_PATH/giant-1.4.0/bin/giantd $GIANT_PATH
-cp $GIANT_PATH/giant-1.4.0/bin/giant-cli $GIANT_PATH
-rm $GIANT_PATH/giant-1.4.0-x86_64-linux-gnu.tar.gz
+
+cp -f $GIANT_PATH/giant-1.4.0/bin/giantd $GIANT_PATH
+cp -f $GIANT_PATH/giant-1.4.0/bin/giant-cli $GIANT_PATH
+rm -Rf $GIANT_PATH/giant-1.*
 
 echo -e "\n\nlaunch giantd ...\n\n"
-./giantd -daemon -reindex
+./giantd -daemon
 
 echo "GIANT Masternode updated"
